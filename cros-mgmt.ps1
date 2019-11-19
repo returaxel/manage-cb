@@ -4,15 +4,14 @@
 .DESCRIPTION
     - Powershell script for handling chromebooks using GAM (https://github.com/jay0lee/GAM).
     - Used to change state (renable, disable, deprovision) or get info about managed chromebooks.
-.PARAMETER logSavePath
-    Default save location is script root. 
-    Specify a new location, ex: "C:\temp", or leave blank. 
 .PARAMETER action
-    Input "reenable", "deprovision", "disable", "info"
+    Input "reenable", "deprovision", "disable", "info".
 .PARAMETER serialNumber
     Device serial number.
 .PARAMETER optionalInfo
-
+    Accepts optional GAM commands, ex; allFields, basic, OrgUnitPath.
+.PARAMETER logSavePath
+    Specify a new location, ex: "C:\temp", or leave blank. Default save location is script root. 
 .INPUTS
     None
 .OUTPUTS
@@ -31,10 +30,11 @@
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 
 param(
-    [Parameter(Mandatory=$false)][string]$logSavePath,
+    [Parameter(Position=1)]
     [ValidateSet("reenable", "deprovision", "disable", "info")][string]$action,
-    [Parameter(Mandatory=$true)][string]$serialNumber,
-    [Parameter(Mandatory=$false,ValueFromRemainingArguments=$true)][psobject[]]$optionalInfo
+    [Parameter(Position=2, Mandatory=$true)][string]$serialNumber,
+    [Parameter(Position=3, Mandatory=$false,ValueFromRemainingArguments=$true)][psobject[]]$optionalInfo
+    #[Parameter(Position=4, Mandatory=$false)][string]$logSavePath
 )
 
 #Set Error Action to Silently Continue
@@ -72,7 +72,7 @@ function Get-SerialNumber {
         gam cros_sn $serialNumber print
 }
 
-function Cros-Action{
+function Set-State{
     param (
         [Parameter(Mandatory=$true)][String]$action,
         [Parameter(Mandatory=$true)][string]$sN,
@@ -90,11 +90,7 @@ function Cros-Action{
 
 #-----------------------------------------------------------[Execution]------------------------------------------------------------
  
-foreach ($i in $optionalInfo){
-    Write-Host $i
-}
-
-Set-Log $logSavePath $action $serialNumber 
+#Set-Log $logSavePath $action $serialNumber 
 $sN = Get-SerialNumber $serialNumber
-Cros-Action $action $sN $optionalInfo
+Set-State $action $sN $optionalInfo
 
