@@ -30,7 +30,7 @@
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 
 param(
-    [Parameter(Position=1)]
+    [Parameter(Position=1, Mandatory=$true)]
     [ValidateSet("reenable", "deprovision", "disable", "info")][string]$action,
     [Parameter(Position=2, Mandatory=$true)][string]$serialNumber,
     [Parameter(Position=3, Mandatory=$false,ValueFromRemainingArguments=$true)][psobject[]]$optionalInfo
