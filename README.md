@@ -1,7 +1,6 @@
 # cros-mgmt
 
-**PROVIDED AS IS**
- *Work in progress*
+**PROVIDED AS IS - USE AT YOUR OWN RISK - NO WARRANTY**
 
 ## Prereq
 * GAM (https://github.com/jay0lee/GAM#start-of-content) 
@@ -30,4 +29,4 @@ CrOS Device: D3V1C31D-D3V1C31D-D3V1C31D-D3V1C31D-D3V1C31D (1 of 1)
 >07/05/2019 11:10:51, serialnumber, reenable
 
 ## Finally
-**PROVIDED AS IS**
+**PROVIDED AS IS - USE AT YOUR OWN RISK - NO WARRANTY**
