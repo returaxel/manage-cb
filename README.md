@@ -1,12 +1,9 @@
-# Manage-cb
+## Disclaimer
 
-**PROVIDED AS IS - USE AT YOUR OWN RISK - NO WARRANTY**
+use at your own risk
 
 ## Prereq
-* GAM (https://github.com/jay0lee/GAM#start-of-content) 
+GAM (https://github.com/jay0lee/GAM#start-of-content) 
 
 ## Application
 ReEnable, Disable, Deprovision, Info
-
-## Finally
-**PROVIDED AS IS - USE AT YOUR OWN RISK - NO WARRANTY**
